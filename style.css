@@ -1,0 +1,95 @@
+:root {
+  --number-of-characters: 21;
+}
+body {
+  font-family: 'Roboto mono', monospace;
+  font-size: 1rem;
+  display: -ms-grid;
+  display: grid;
+  place-content: center;
+  height: 100vh;
+}
+h1 {
+  padding-left: 3px;
+  -webkit-clip-path: inset(0 calc(100% - 3px) 0 0);
+          clip-path: inset(0 calc(100% - 3px) 0 0);
+  background: -o-linear-gradient(black 0 0);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0, black));
+  background: linear-gradient(black 0 0);
+  background-size: 3px 100%;
+  background-position: left;
+  background-repeat: no-repeat; 
+  -webkit-animation: blink 1.2s infinite, 
+             type-it 6s steps(var(--number-of-characters)) forwards, 
+             move-cursor 6s steps(var(--number-of-characters)) forwards; 
+          animation: blink 1.2s infinite, 
+             type-it 6s steps(var(--number-of-characters)) forwards, 
+             move-cursor 6s steps(var(--number-of-characters)) forwards;
+}
+.anim-end {
+  -webkit-animation: blink 1.2s infinite;
+          animation: blink 1.2s infinite;
+  -webkit-clip-path: inset(0 -1ch 0 0);
+          clip-path: inset(0 -1ch 0 0);
+  background-position: right;
+  
+}
+.anim-restart {
+  -webkit-clip-path: inset(0 calc(100% - 3px) 0 0);
+          clip-path: inset(0 calc(100% - 3px) 0 0);
+  background-postition: left;
+      -webkit-animation: blink 1.2s infinite, 
+             type-it 6s steps(var(--number-of-characters)) forwards, 
+             move-cursor 6s steps(var(--number-of-characters)) forwards;
+              animation: blink 1.2s infinite, 
+             type-it 6s steps(var(--number-of-characters)) forwards, 
+             move-cursor 6s steps(var(--number-of-characters)) forwards;
+}
+@-webkit-keyframes type-it {
+  0% {-webkit-clip-path: inset(0 calc(100% - 3px) 0 0);clip-path: inset(0 calc(100% - 3px) 0 0)}
+  30% {-webkit-clip-path: inset(0 calc(100% - 3px) 0 0);clip-path: inset(0 calc(100% - 3px) 0 0)}
+  100% {-webkit-clip-path: inset(0 0 0 0);clip-path: inset(0 0 0 0)}
+}
+@keyframes type-it {
+  0% {-webkit-clip-path: inset(0 calc(100% - 3px) 0 0);clip-path: inset(0 calc(100% - 3px) 0 0)}
+  30% {-webkit-clip-path: inset(0 calc(100% - 3px) 0 0);clip-path: inset(0 calc(100% - 3px) 0 0)}
+  100% {-webkit-clip-path: inset(0 0 0 0);clip-path: inset(0 0 0 0)}
+}
+@-webkit-keyframes blink {
+  0% { background-size: 0 100% }
+  50% { background-size: 0 100% }
+  50.1% { background-size: 3px 100% }
+}
+@keyframes blink {
+  0% { background-size: 0 100% }
+  50% { background-size: 0 100% }
+  50.1% { background-size: 3px 100% }
+}
+@-webkit-keyframes move-cursor {
+  0% {background-position: left}
+  30% {background-position: left}
+  100% {background-position: right}
+}
+@keyframes move-cursor {
+  0% {background-position: left}
+  30% {background-position: left}
+  100% {background-position: right}
+}
+button {
+  height: 40px;
+  cursor: pointer;
+  font-size: 1.5rem;
+  font-family: arial, sans-serif;
+  color: white;
+  border: 1px solid limegreen;
+  border-radius: 6px;
+  background: darkcyan;
+}
+@media (max-width: 500px) {
+  h1 {
+    font-size: 20px;
+  }
+  button {
+    font-size: 16px;
+  }
+}
